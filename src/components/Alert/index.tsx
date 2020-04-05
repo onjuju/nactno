@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { ReactComponent as CloseIconSvg } from "./close.svg";
 
 type AlertType = "success" | "default" | "danger" | "warning";
-interface AlertProps {
+export interface AlertProps {
   className?: string;
   title?: string;
   content?: string | React.ReactElement;
@@ -42,7 +42,7 @@ const Alert: React.FC<AlertProps> = (props) => {
     if (divEle) {
       divEle.style.opacity = "0";
       setTimeout(() => {
-        divEle.parentNode?.removeChild(divEle);
+        divEle.style.display = "none";
         afterClose && afterClose();
       }, closeDuration * 1000);
     }
@@ -53,6 +53,7 @@ const Alert: React.FC<AlertProps> = (props) => {
       className={classes}
       ref={rootRef}
       style={{ transition: `opacity ${closeDuration}s` }}
+      data-testid="alert-wrapper"
     >
       {closable && (
         <span className="nact-alert-close-icon" onClick={handleCloseClick}>
