@@ -5,4 +5,12 @@
 
 @import "./mixin";
 
+/* Button Component */
 @import "../components/Button/style";
+
+/* Alert Component */
+@import "../components/Alert/style";
+
+body {
+  padding: 80px;
+}
