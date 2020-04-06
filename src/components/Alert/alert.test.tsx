@@ -41,4 +41,11 @@ describe("test Alert Component base", () => {
     expect(props.afterClose).toBeCalledTimes(1);
     expect(ele).not.toBeVisible();
   });
+  it("should render close test current", () => {
+    const closeText = Math.random() + "";
+    render(<Alert closable closeText={closeText} />);
+    const ele = screen.getByTestId(testId);
+    const closeEle = ele.getElementsByClassName("nact-alert-close-icon")[0];
+    expect(closeEle).toContainHTML(closeText);
+  });
 });
