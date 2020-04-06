@@ -2,29 +2,48 @@ import React from "react";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Alert from "./components/Alert";
 import Menu from "./components/Menu";
-import MenuItem from "./components/Menu/MenuItem";
 
 function App() {
   return (
     <div className="App" data-testid="test-app">
       <header className="App-header">
-        <Menu defaultIndex={0} onSelect={(index) => console.log(index)}>
-          <Menu.Item index={0}>link 1</Menu.Item>
-          <Menu.Item index={1} disabled>
-            link 2
-          </Menu.Item>
-          <Menu.Item index={2}>link 3</Menu.Item>
+        <Menu defaultIndex={"0"} onSelect={(index) => console.log(index)}>
+          <Menu.Item>link 1</Menu.Item>
+          <Menu.Item disabled>link 2</Menu.Item>
+          <Menu.Item>link 3</Menu.Item>
         </Menu>
         <Menu
-          defaultIndex={0}
+          defaultIndex={"0"}
+          onSelect={(index) => console.log(index)}
+          mode="horizontal"
+        >
+          <Menu.Item>item 321</Menu.Item>
+          <Menu.SubMenu title="drop">
+            <Menu.Item>sub 1</Menu.Item>
+            <Menu.Item>sub 2</Menu.Item>
+            <Menu.Item>sub 3</Menu.Item>
+            <Menu.Item>sub 4</Menu.Item>
+          </Menu.SubMenu>
+        </Menu>
+        <Menu
+          defaultIndex={"0"}
           onSelect={(index) => console.log(index)}
           mode="vertical"
+          defaultOpenSubMenus={[]}
         >
-          <MenuItem index={0}>link 1</MenuItem>
-          <MenuItem index={1} disabled>
-            link 2
-          </MenuItem>
-          <MenuItem index={2}>link 3</MenuItem>
+          <Menu.Item>item 321</Menu.Item>
+          <Menu.SubMenu title="drop 1">
+            <Menu.Item>sub 1</Menu.Item>
+            <Menu.Item>sub 2</Menu.Item>
+            <Menu.Item>sub 3</Menu.Item>
+            <Menu.Item>sub 4</Menu.Item>
+          </Menu.SubMenu>
+          <Menu.SubMenu title="drop 22">
+            <Menu.Item>sub 1</Menu.Item>
+            <Menu.Item>sub 2</Menu.Item>
+            <Menu.Item>sub 3</Menu.Item>
+            <Menu.Item>sub 4</Menu.Item>
+          </Menu.SubMenu>
         </Menu>
         {/* <Button className="button1" size={ButtonSize.Small} autoFocus>
           按钮1
