@@ -11,7 +11,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$blue: #126bae !default;
+$blue: #1a94bc !default;
 $indigo: #2376b7 !default;
 $purple: #894276 !default;
 $pink: #f07c82 !default;
@@ -235,5 +235,21 @@ $menu-item-active-color: $primary !default;
 $menu-item-active-border-width: 2px !default;
 $menu-item-disabled-color: $gray-600 !default;
 
-$submenu-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+$submenu-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12),
+  0 0 6px 0 rgba(0, 0, 0, 0.04);
 
+/* Tabs */
+$tabs-border-width: $border-width !default;
+$tabs-border-color: $border-color !default;
+
+$tabs-content-padding-top: 1rem !default;
+
+/* TabItem */
+$tab-item-disabled-color: $gray-600 !default;
+// default mode
+$tab-item-active-color: $primary !default;
+$tab-item-active-border-width: 2px !default;
+$tab-item-padding: 0.3rem 0.8rem !default;
+// card mode
+$tab-item-card-border-color: $tabs-border-color !default;
+$tab-item-card-border-width: 1px !default;

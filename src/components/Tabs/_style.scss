@@ -1,0 +1,52 @@
+/* outer wrapper */
+.nact-tabs {
+  ul {
+    display: flex;
+    list-style: none;
+    border-bottom: $tabs-border-width solid $tabs-border-color;
+    padding: 0;
+    margin: 0;
+  }
+  /* li element */
+  .nact-tabs-item {
+    padding: $tab-item-padding;
+    cursor: pointer;
+    &.active {
+      color: $tab-item-active-color;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      color: $tab-item-disabled-color;
+      & > * {
+        pointer-events: none;
+      }
+    }
+  }
+  /* content wrapper */
+  .nact-tabs-content {
+    padding-top: $tabs-content-padding-top;
+  }
+}
+/* default mode */
+.nact-tabs-default {
+  .nact-tabs-item {
+    border: $tab-item-active-border-width solid transparent;
+    &.active {
+      border-bottom-color: $tab-item-active-color;
+    }
+  }
+}
+
+/* card mode */
+.nact-tabs-card {
+  > ul > .nact-tabs-item {
+    border: $tab-item-card-border-width solid transparent;
+    transform: translateY(1px);
+    border-radius: $border-radius-sm;
+    // border-bottom-color:
+    &.active {
+      border-color: $tab-item-card-border-color;
+      border-bottom-color: $white;
+    }
+  }
+}

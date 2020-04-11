@@ -2,12 +2,36 @@ import React from "react";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Alert from "./components/Alert";
 import Menu from "./components/Menu";
+import Tabs from "./components/Tabs";
+
+const { TabItem } = Tabs;
 
 function App() {
   return (
     <div className="App" data-testid="test-app">
       <header className="App-header">
-        <Menu defaultIndex={"0"} onSelect={(index) => console.log(index)}>
+        <Tabs mode="card">
+          <TabItem label="tab1">
+            content1<h2>321</h2>
+          </TabItem>
+          <TabItem label="tab2" disabled>
+            content2
+          </TabItem>
+          <TabItem label="选择卡3">content3</TabItem>
+          <TabItem label="选择想444444444">
+            <Tabs mode="default">
+              <TabItem label="tab1">
+                content1<h2>321</h2>
+              </TabItem>
+              <TabItem disabled label="tab2">
+                content2
+              </TabItem>
+              <TabItem label="选择卡3">content3</TabItem>
+              <TabItem label="选择想444444444">content4</TabItem>
+            </Tabs>
+          </TabItem>
+        </Tabs>
+        {/* <Menu defaultIndex={"0"} onSelect={(index) => console.log(index)}>
           <Menu.Item>link 1</Menu.Item>
           <Menu.Item disabled>link 2</Menu.Item>
           <Menu.Item>link 3</Menu.Item>
@@ -44,7 +68,7 @@ function App() {
             <Menu.Item>sub 3</Menu.Item>
             <Menu.Item>sub 4</Menu.Item>
           </Menu.SubMenu>
-        </Menu>
+        </Menu> */}
         {/* <Button className="button1" size={ButtonSize.Small} autoFocus>
           按钮1
         </Button>
