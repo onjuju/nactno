@@ -58,7 +58,7 @@
 
   /* 二次菜单下的ul元素 */
   .nact-submenu {
-    display: none;
+    // display: none;
     list-style: none;
     padding-left: 0;
     white-space: nowrap;
@@ -74,7 +74,7 @@
     }
     /* 打开状态 */
     &.open {
-      display: block;
+      // display: block;
     }
   }
 }
