@@ -5,4 +5,20 @@
 
 @import "./mixin";
 
+@import "./animation";
+
+/* Button Component */
 @import "../components/Button/style";
+
+/* Alert Component */
+@import "../components/Alert/style";
+
+/* Menu Component */
+@import "../components/Menu/style";
+
+/* Icon Component */
+@import "../components/Icon/style";
+
+body {
+  padding: 80px;
+}

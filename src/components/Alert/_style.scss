@@ -1,0 +1,40 @@
+.nact-alert {
+  position: relative;
+  width: $alert-width;
+  padding: $alert-padding-y $alert-padding-right $alert-padding-y
+    $alert-padding-left;
+  border-radius: $alert-border-radius;
+  line-height: $alert-line-height;
+  .nact-alert-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+  }
+  .nact-alert-content {
+    font-size: $font-size-sm;
+  }
+  .nact-alert-close-icon {
+    position: absolute;
+    right: $font-size-sm;
+    top: $font-size-sm;
+    font-size: $font-size-sm;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.9;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.nact-alert-default {
+  @include alert-style($primary);
+}
+.nact-alert-warning {
+  @include alert-style($warning);
+}
+.nact-alert-success {
+  @include alert-style($success);
+}
+.nact-alert-danger {
+  @include alert-style($danger);
+}
