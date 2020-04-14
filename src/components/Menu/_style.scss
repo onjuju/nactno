@@ -29,7 +29,33 @@
   /* 二级菜单项的类 */
   .submenu-item {
     position: relative;
+    .submenu-title {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        .arrow-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .arrow-icon {
+      margin-left: 3px;
+      transition: transform 0.3s;
+    }
   }
+
+  .is-vertical {
+    .arrow-icon {
+      transform: rotate(0deg) !important;
+    }
+  }
+  .is-vertical.is-opened {
+    .arrow-icon {
+      transform: rotate(180deg) !important;
+    }
+  }
+
   /* 二次菜单下的ul元素 */
   .nact-submenu {
     display: none;

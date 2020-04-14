@@ -8,6 +8,7 @@ import React, {
 import classnames from "classnames";
 import { MenuContext } from "./index";
 import { MenuItemProps } from "./MenuItem";
+import Icon from "../Icon";
 
 export interface SubMenuProps {
   index?: string;
@@ -29,6 +30,8 @@ const SubMenu: React.FC<SubMenuProps> = ({
 
   const classes = classnames("nact-menu-item submenu-item", className, {
     active: context.index === index,
+    "is-opened": menuOpen,
+    "is-vertical": context.mode === "vertical",
   });
 
   const handleClick = (e: React.MouseEvent) => {
@@ -89,6 +92,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
     <li key={index} className={classes} {...hoverEvents}>
       <div className="submenu-title" {...clickEvent}>
         {title}
+        <Icon icon="angle-down" className="arrow-icon" />
       </div>
       {renderChildren()}
     </li>

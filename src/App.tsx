@@ -1,12 +1,24 @@
 import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import Alert from "./components/Alert";
+import Icon from "./components/Icon";
 import Menu from "./components/Menu";
+
+library.add(fas);
 
 function App() {
   return (
     <div className="App" data-testid="test-app">
       <header className="App-header">
+        {/* <Icon icon="ship" theme="primary" size="2x" />
+        <Icon icon="ship" theme="danger" size="2x" />
+        <Icon icon="ship" theme="info" size="2x" />
+        <Icon icon="ship" theme="dark" size="2x" />
+        <Icon icon="ship" theme="success" size="2x" />
+        <Icon icon="ship" theme="warning" size="2x" /> */}
         <Menu defaultIndex={"0"} onSelect={(index) => console.log(index)}>
           <Menu.Item>link 1</Menu.Item>
           <Menu.Item disabled>link 2</Menu.Item>
@@ -18,7 +30,7 @@ function App() {
           mode="horizontal"
         >
           <Menu.Item>item 321</Menu.Item>
-          <Menu.SubMenu title="drop">
+          <Menu.SubMenu title="dropdown">
             <Menu.Item>sub 1</Menu.Item>
             <Menu.Item>sub 2</Menu.Item>
             <Menu.Item>sub 3</Menu.Item>

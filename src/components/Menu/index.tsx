@@ -50,6 +50,7 @@ const Menu: IMenu = (props) => {
     },
     [onSelect]
   );
+
   const passedContext: IMenuContext = {
     index: currentActive ? currentActive : "0",
     onSelect: handleSelect,
