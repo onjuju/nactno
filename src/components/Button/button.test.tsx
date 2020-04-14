@@ -1,13 +1,13 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Button, { ButtonType, ButtonSize, ButtonProps } from "./button";
+import Button, { ButtonProps } from "./button";
 
 const clickProps = {
   onClick: jest.fn(),
 };
 const testProps: ButtonProps = {
-  btnType: ButtonType.Primary,
-  size: ButtonSize.Small,
+  btnType: "primary",
+  size: "sm",
   className: "ibtn",
 };
 
@@ -40,7 +40,7 @@ describe("test Button Component base", () => {
   it("shoild render a link wher btnType equals link and href is provided", () => {
     const testMsg = "testttt";
     render(
-      <Button btnType={ButtonType.Link} href="www.baidu.com">
+      <Button btnType="link" href="www.baidu.com">
         {testMsg}
       </Button>
     );
