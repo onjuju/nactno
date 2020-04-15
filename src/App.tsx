@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App" data-testid="test-app">
       <header className="App-header">
+        <Alert content="ccccc" title="title" type="danger" closable />
         {/* <Icon icon="ship" theme="primary" size="2x" />
         <Icon icon="ship" theme="danger" size="2x" />
         <Icon icon="ship" theme="info" size="2x" />
