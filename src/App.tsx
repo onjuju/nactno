@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import Button, { ButtonType, ButtonSize } from "./components/Button/button";
+import Button from "./components/Button/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import Alert from "./components/Alert";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
+import Transition from "./components/Transition";
 
 library.add(fas);
 
 function App() {
+  const [show, setShow] = useState(false);
+
   return (
     <div className="App" data-testid="test-app">
       <header className="App-header">
@@ -57,6 +60,31 @@ function App() {
             <Menu.Item>sub 4</Menu.Item>
           </Menu.SubMenu>
         </Menu>
+        <Button size="lg" onClick={() => setShow((show) => !show)}>
+          SET SHOW
+        </Button>
+
+        <Transition in={show} timeout={300} animation="zoom-in-left">
+          <div>
+            <p>
+              Edit<code>src/App.tsx</code> and save to reload
+            </p>
+            <p>
+              Edit<code>src/App.tsx</code> and save to reload
+            </p>
+            <p>
+              Edit<code>src/App.tsx</code> and save to reload
+            </p>
+            <p>
+              Edit<code>src/App.tsx</code> and save to reload
+            </p>
+          </div>
+        </Transition>
+        <Transition in={show} timeout={300} animation="zoom-in-right" wrapper>
+          <Button btnType="primary" size="sm">
+            sm button!
+          </Button>
+        </Transition>
         {/* <Button className="button1" size={ButtonSize.Small} autoFocus>
           按钮1
         </Button>
