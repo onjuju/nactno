@@ -18,3 +18,10 @@
 
 /* Icon Component */
 @import "../components/Icon/style";
+/* Tabs Component */
+@import "../components/Tabs/style";
+
+body {
+  padding: 80px;
+  border: 1px solid #000;
+}
