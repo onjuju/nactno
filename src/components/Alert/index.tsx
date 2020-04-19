@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import classnames from "classnames";
 import { ReactComponent as CloseIconSvg } from "./close.svg";
+import Transition from "../Transition";
 
 type AlertType = "success" | "default" | "danger" | "warning";
 export interface AlertProps {
@@ -11,7 +12,6 @@ export interface AlertProps {
   closable?: boolean;
   closeText?: string | React.ReactElement;
   onClose?: (e: React.MouseEvent) => void;
-  closeDuration?: number;
   afterClose?: () => void;
 }
 
@@ -24,7 +24,6 @@ const Alert: React.FC<AlertProps> = (props) => {
     closable,
     closeText,
     onClose,
-    closeDuration = 0.4,
     afterClose,
   } = props;
 
@@ -32,46 +31,49 @@ const Alert: React.FC<AlertProps> = (props) => {
     [`nact-alert-${type}`]: type,
   });
 
+  const [show, setShow] = useState(true);
+
   const rootRef = useRef<HTMLDivElement>(null);
 
   const handleCloseClick = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>
   ) => {
-    const divEle = rootRef.current;
-    onClose && onClose(e);
-    if (divEle) {
-      divEle.style.opacity = "0";
-      setTimeout(() => {
-        divEle.style.display = "none";
-        afterClose && afterClose();
-      }, closeDuration * 1000);
-    }
+    setShow(false);
+    // const divEle = rootRef.current;
+    // onClose && onClose(e);
+    // if (divEle) {
+    //   divEle.style.opacity = "0";
+    //   setTimeout(() => {
+    //     divEle.style.display = "none";
+    //     afterClose && afterClose();
+    //   }, closeDuration * 1000);
+    // }
   };
 
   return (
-    <div
-      className={classes}
-      ref={rootRef}
-      style={{ transition: `opacity ${closeDuration}s` }}
-      data-testid="alert-wrapper"
-    >
-      {closable && (
-        <span className="nact-alert-close-icon" onClick={handleCloseClick}>
-          {closeText}
-        </span>
-      )}
+    <Transition in={show} timeout={300} animation="zoom-in-top">
+      <div
+        className={classes}
+        ref={rootRef}
+        data-testid="alert-wrapper"
+      >
+        {closable && (
+          <span className="nact-alert-close-icon" onClick={handleCloseClick}>
+            {closeText}
+          </span>
+        )}
 
-      {title && <div className="nact-alert-title">{title}</div>}
-      <div className="nact-alert-content">{content}</div>
-    </div>
+        {title && <div className="nact-alert-title">{title}</div>}
+        <div className="nact-alert-content">{content}</div>
+      </div>
+    </Transition>
   );
 };
 
 Alert.defaultProps = {
   type: "default",
   closable: false,
-  closeText: <CloseIconSvg />,
-  closeDuration: 0.4,
+  closeText: <CloseIconSvg />
 };
 
 export default Alert;
