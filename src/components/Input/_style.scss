@@ -19,6 +19,8 @@
     height: $input-default-height;
     line-height: $input-default-line-height;
     padding: 0 4px;
+    background: $gray-200;
+    border-color: $gray-200;
   }
 
   .input-icon {

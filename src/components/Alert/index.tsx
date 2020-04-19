@@ -38,7 +38,9 @@ const Alert: React.FC<AlertProps> = (props) => {
   const handleCloseClick = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>
   ) => {
+    onClose && onClose(e);
     setShow(false);
+    afterClose && afterClose();
     // const divEle = rootRef.current;
     // onClose && onClose(e);
     // if (divEle) {
@@ -52,11 +54,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 
   return (
     <Transition in={show} timeout={300} animation="zoom-in-top">
-      <div
-        className={classes}
-        ref={rootRef}
-        data-testid="alert-wrapper"
-      >
+      <div className={classes} ref={rootRef} data-testid="alert-wrapper">
         {closable && (
           <span className="nact-alert-close-icon" onClick={handleCloseClick}>
             {closeText}
@@ -73,7 +71,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 Alert.defaultProps = {
   type: "default",
   closable: false,
-  closeText: <CloseIconSvg />
+  closeText: <CloseIconSvg />,
 };
 
 export default Alert;

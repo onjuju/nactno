@@ -39,7 +39,7 @@ describe("test Alert Component base", () => {
     expect(props.onClose).toBeCalledTimes(1);
     jest.runOnlyPendingTimers();
     expect(props.afterClose).toBeCalledTimes(1);
-    expect(ele).not.toBeVisible();
+    expect(screen.queryByTestId(testId)).toBeFalsy();
   });
   it("should render close test current", () => {
     const closeText = Math.random() + "";

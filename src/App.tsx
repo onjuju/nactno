@@ -18,6 +18,8 @@ function App() {
     <div className="App" data-testid="test-app">
       <header className="App-header"></header>
       <section>
+        <Alert content="content" title="title" closable />
+        <Input />
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -27,6 +29,7 @@ function App() {
             icon: "calendar-day",
             theme: "danger",
           }}
+          defaultValue="111"
         />
         <br />
         <Input
