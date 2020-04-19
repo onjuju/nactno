@@ -264,3 +264,21 @@ $tab-item-padding: 0.3rem 0.8rem !default;
 // card mode
 $tab-item-card-border-color: $tabs-border-color !default;
 $tab-item-card-border-width: 1px !default;
+
+/* Input */
+
+$input-default-height: 34px !default;
+$input-default-line-height: 34px !default;
+$input-default-font-size: 14px !default;
+$input-padding-x: 8px !default;
+$input-border-radius: 4px !default;
+$input-border: 1px solid $gray-400 !default;
+$input-outline-color: $primary !default;
+
+$input-sm-height: 28px !default;
+$input-sm-line-height: 28px !default;
+$input-sm-font-size: 12px !default;
+
+$input-lg-height: 42px !default;
+$input-lg-line-height: 42px !default;
+$input-lg-font-size: 16px !default;

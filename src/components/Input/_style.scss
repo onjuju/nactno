@@ -1,0 +1,52 @@
+.nact-input {
+  display: inline-flex;
+  font-size: $input-default-font-size;
+  position: relative;
+  input {
+    height: $input-default-height;
+    line-height: $input-default-line-height;
+    padding: $input-padding-x;
+    border-radius: $input-border-radius;
+    border: $input-border;
+    outline-color: $input-outline-color;
+  }
+
+  & > span {
+    display: inline-block;
+    height: 100%;
+    background: $white;
+    border: $input-border;
+    height: $input-default-height;
+    line-height: $input-default-line-height;
+    padding: 0 4px;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  margin-bottom: 6px;
+}
+
+.input-sm {
+  font-size: $input-sm-font-size;
+
+  input,
+  & > span {
+    height: $input-sm-height;
+    line-height: $input-sm-line-height;
+  }
+}
+
+.input-lg {
+  font-size: $input-lg-font-size;
+
+  input,
+  & > span {
+    height: $input-lg-height;
+    line-height: $input-lg-line-height;
+  }
+}
