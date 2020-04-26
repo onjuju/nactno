@@ -15,8 +15,5 @@ const ControlledInput = () => {
   );
 };
 
-const defaultInput = () => {
-  return <ControlledInput />;
-};
 
-storiesOf("Input Component", module).add("Input", defaultInput);
+storiesOf("Input Component", module).add("Input", ControlledInput);
