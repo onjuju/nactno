@@ -8,6 +8,7 @@ import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import Transition from "./components/Transition";
 import Input from "./components/Input";
+import Auto from "./AutoCompleteTest";
 
 library.add(fas);
 
@@ -18,7 +19,8 @@ function App() {
     <div className="App" data-testid="test-app">
       <header className="App-header"></header>
       <section>
-        <Alert content="content" title="title" closable />
+        <Auto />
+        {/* <Alert content="content" title="title" closable />
         <Input />
         <Input
           value={value}
@@ -48,7 +50,7 @@ function App() {
             icon: "marker",
             theme: "dark",
           }}
-        />
+        /> */}
         <br />
       </section>
     </div>

@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import { storiesOf } from "@storybook/react";
-
-import AutoComplete, { DataSoutceType } from "./index";
-import { action } from "@storybook/addon-actions";
-
-interface LakerPlayerProps {
-  value: string;
-  number: number;
-}
+import React from "react";
+import AutoComplete from "./components/AutoComplete";
 
 const SimpleComplete = () => {
   const lakers = [
@@ -53,6 +45,7 @@ const SimpleComplete = () => {
     return (
       <>
         <span>
+          <img src={item.avatar_url} style={{ width: "50px" }} />
         </span>
         <span>Name: {item.login}</span>
       </>
@@ -74,13 +67,10 @@ const SimpleComplete = () => {
   return (
     <AutoComplete
       fetchSuggestions={handleFetch}
-      onSelect={action("selected")}
+      onSelect={(item: any) => console.log("select", item)}
       renderOption={renderOption}
     />
   );
 };
 
-storiesOf("AutoComplete Component", module).add(
-  "AutoComplete",
-  SimpleComplete
-);
+export default SimpleComplete;
