@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { library, icon } from "@fortawesome/fontawesome-svg-core";
 import Button from "./components/Button/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,17 +9,43 @@ import Menu from "./components/Menu";
 import Transition from "./components/Transition";
 import Input from "./components/Input";
 import Auto from "./AutoCompleteTest";
+import axios from "axios";
 
 library.add(fas);
 
 function App() {
-  const [show, setShow] = useState(false);
-  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const postData = {
+    title: "my title",
+    boly: "hello man",
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const uploadedFile = files[0];
+      const formData = new FormData();
+      formData.append(uploadedFile.name, uploadedFile);
+      console.log(formData);
+
+      axios.post("http://www.mocky.io/v2/5ea904032d0000dfcd3a423f", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }).then(res => {
+        console.log(res);
+      })
+      console.log(files, uploadedFile);
+      
+    }
+  }
+
   return (
     <div className="App" data-testid="test-app">
-      <header className="App-header"></header>
+      <input type="file" name="myfile" onChange={handleFileChange} />
+
       <section>
-        <Auto />
+        {/* <Auto /> */}
         {/* <Alert content="content" title="title" closable />
         <Input />
         <Input
