@@ -1,8 +1,10 @@
 .nact-input {
-  display: inline-flex;
+  display: flex;
+  width: 100%;
   font-size: $input-default-font-size;
   position: relative;
   input {
+    width: 100%;
     height: $input-default-height;
     line-height: $input-default-line-height;
     padding: $input-padding-x;

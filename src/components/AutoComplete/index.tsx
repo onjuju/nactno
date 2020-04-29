@@ -12,6 +12,7 @@ import Input, { InputProps } from "../Input";
 import Icon from "../Icon";
 import useDebounce from "../../hooks/useDebounce";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import Transition from "../Transition";
 
 interface DataSourceObject {
   value: string;
@@ -41,6 +42,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   const [suggestions, setSuggestions] = useState<DataSoutceType[]>([]);
   const [loading, setLoading] = useState(false);
   const [highlightIndex, setHighightIndex] = useState(-1);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const ifTriggerSearch = useRef(false);
 
@@ -62,15 +64,21 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
         results
           .then((data) => {
             setSuggestions(data);
+            if (data.length && data.length > 0) {
+              setShowDropdown(true);
+            }
           })
           .finally(() => {
             setLoading(false);
           });
       } else {
         setSuggestions(results);
+        if (results.length > 0) {
+          setShowDropdown(true);
+        }
       }
     } else {
-      setSuggestions([]);
+      setShowDropdown(false);
     }
     setHighightIndex(-1);
   }, [fetchSuggestions, searchValue]);
@@ -100,7 +108,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
         break;
       case 27:
         // esc
-        setSuggestions([]);
+        setShowDropdown(false);
         break;
       default:
         break;
@@ -115,7 +123,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
 
   const handleSelect = (item: DataSoutceType) => {
     setInputValue(item.value);
-    setSuggestions([]);
+    setShowDropdown(false);
     onSelect && onSelect(item);
     ifTriggerSearch.current = false;
   };
@@ -126,25 +134,36 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
 
   const generateDropdown = () => {
     return (
-      <ul>
-        {suggestions.map((item, index) => {
-          const classes = classnames("suggestion-item", {
-            "item-highlighted": index === highlightIndex,
-          });
-          return (
-            <li
-              className={classes}
-              key={index}
-              onClick={() => {
-                console.log("li click");
-                handleSelect(item);
-              }}
-            >
-              {renderTemplate(item)}
-            </li>
-          );
-        })}
-      </ul>
+      <Transition
+        in={showDropdown || loading}
+        animation="zoom-in-top"
+        timeout={300}
+        onExited={() => setSuggestions([])}
+      >
+        <ul className="nact-suggestion-list">
+          {loading ? (
+            <div className="suggstion-loading-icon">
+              <Icon icon="spinner" spin />
+            </div>
+          ) : ""}
+          {suggestions.map((item, index) => {
+            const classes = classnames("suggestion-item", {
+              "is-active": index === highlightIndex,
+            });
+            return (
+              <li
+                className={classes}
+                key={index}
+                onClick={() => {
+                  handleSelect(item);
+                }}
+              >
+                {renderTemplate(item)}
+              </li>
+            );
+          })}
+        </ul>
+      </Transition>
     );
   };
 
@@ -156,12 +175,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
         onKeyDown={handleKeyDown}
         {...restProps}
       />
-      {suggestions.length > 0 && generateDropdown()}
-      {loading && (
-        <ul>
-          <Icon icon="spinner" spin />
-        </ul>
-      )}
+      {generateDropdown()}
     </div>
   );
 };
