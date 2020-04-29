@@ -266,7 +266,6 @@ $tab-item-card-border-color: $tabs-border-color !default;
 $tab-item-card-border-width: 1px !default;
 
 /* Input */
-
 $input-default-height: 34px !default;
 $input-default-line-height: 34px !default;
 $input-default-font-size: 14px !default;
@@ -282,3 +281,13 @@ $input-sm-font-size: 12px !default;
 $input-lg-height: 42px !default;
 $input-lg-line-height: 42px !default;
 $input-lg-font-size: 16px !default;
+
+/* Select */
+$select-height: 34px !default;
+$select-line-height: 34px !default;
+$select-font-size: 14px !default;
+$select-padding-x: 8px !default;
+$select-border: 1px solid $gray-400 !default;
+$select-border-radius: 4px !default;
+
+$select-active-border-color: $primary;
