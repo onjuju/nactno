@@ -50,6 +50,10 @@ const SimpleUpload = () => {
       onProgress={action("progress")}
       onError={action("error")}
       onSuccess={action("success")}
+      onRemove={(file) => {
+        console.log(file);
+        
+      }}
       // defaultFileList={defaultFileList}
       name="fileName"
       data={{"key": "vvv"}}
@@ -58,9 +62,9 @@ const SimpleUpload = () => {
       multiple
       drag
     >
-      <Icon icon="upload" size="5x" theme="info" />
+      {/* <Icon icon="upload" size="5x" theme="info" /> */}
       <br />
-      <p>Drag file over here</p>
+      <Button>Drag file over here</Button>
     </Upload>
   );
 };

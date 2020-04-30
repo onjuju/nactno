@@ -96,6 +96,7 @@ const Upload: FC<UploadProps> = (props) => {
   };
 
   const handleRemove = (file: UploadFile) => {
+    // console.log("remove: ", file);
     setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
     if (onRemove) {
       onRemove(file);
@@ -157,12 +158,13 @@ const Upload: FC<UploadProps> = (props) => {
         },
       })
       .then((res) => {
-        console.log("done: ", res);
         updateFileList(_file, {
           status: "success",
           percent: 100,
           response: res.data,
         });
+        _file.status = "success";
+        _file.percent = 100;
         if (onSuccess) {
           onSuccess(res.data, _file);
         }
@@ -185,7 +187,7 @@ const Upload: FC<UploadProps> = (props) => {
       });
   };
 
-
+  
   return (
     <div className="nact-upload">
       <div className="nact-upload-input" onClick={handleClick}>
@@ -200,6 +202,7 @@ const Upload: FC<UploadProps> = (props) => {
         onChange={handleFileChange}
         accept={accept}
         multiple={multiple}
+        data-testid="test-upload"
       />
       <UploadList fileList={fileList} onRemove={handleRemove} />
     </div>

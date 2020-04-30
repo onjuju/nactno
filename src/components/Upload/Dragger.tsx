@@ -13,7 +13,7 @@ export const Dragger: FC<DraggerProps> = (props) => {
   });
 
   const handleDrag = (e: DragEvent<HTMLDivElement>, over: boolean) => {
-    console.log(over);
+    // console.log(over);
     e.preventDefault();
     setDragOver(over);
   };

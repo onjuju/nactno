@@ -8,6 +8,12 @@ import {
 } from "@testing-library/react";
 import Menu, { MenuProps } from "./index";
 
+jest.mock("../Icon", () => {
+  return (obj: any) => {
+    return <span>{obj.icon}</span>;
+  };
+});
+
 const testMenuProps: MenuProps = {
   defaultIndex: "0",
   onSelect: jest.fn(),
