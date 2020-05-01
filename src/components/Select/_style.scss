@@ -1,0 +1,21 @@
+.nact-select {
+  width: 100%;
+  height: $select-height;
+  line-height: $select-line-height;
+  position: relative;
+  border: $select-border;
+  border-radius: $select-border-radius;
+  cursor: pointer;
+  &:hover {
+    border-color: $select-active-border-color;
+  }
+  .select-angle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .option-list {
+  }
+}

@@ -8,6 +8,12 @@ import {
 } from "@testing-library/react";
 import Menu, { MenuProps } from "./index";
 
+jest.mock("../Icon", () => {
+  return (obj: any) => {
+    return <span>{obj.icon}</span>;
+  };
+});
+
 const testMenuProps: MenuProps = {
   defaultIndex: "0",
   onSelect: jest.fn(),
@@ -85,7 +91,7 @@ describe("test Menu and MenuItem Component", () => {
     expect(menuElement).toHaveClass("menu-vertical");
   });
   it("should show dropdown items when mouse hover on SubMenu", async () => {
-    expect(wrapper.queryByText("drop1")).not.toBeVisible();
+    expect(wrapper.queryByText("drop1")).toBeFalsy();
     const dropdownEle = wrapper.getByText("dropdown");
     fireEvent.mouseEnter(dropdownEle);
 
@@ -105,7 +111,7 @@ describe("test Menu and MenuItem Component", () => {
     cleanup();
     const wrapper = render(createTestMenuByProps(testVerticalProps));
     wrapper.container.append(createStyleFile());
-    expect(wrapper.queryByText("drop1")).not.toBeVisible();
+    expect(wrapper.queryByText("drop1")).toBeFalsy();
     fireEvent.click(wrapper.getByText("dropdown"));
     expect(wrapper.queryByText("drop1")).toBeVisible();
   });
