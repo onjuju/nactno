@@ -8,7 +8,6 @@ import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import Transition from "./components/Transition";
 import Input from "./components/Input";
-import Auto from "./AutoCompleteTest";
 import axios from "axios";
 
 library.add(fas);

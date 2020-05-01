@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import classnames from "classnames";
-import { ReactComponent as CloseIconSvg } from "./close.svg";
+// import { ReactComponent as CloseIconSvg } from "./close.svg";
 import Transition from "../Transition";
 
 type AlertType = "success" | "default" | "danger" | "warning";
@@ -71,7 +71,7 @@ const Alert: React.FC<AlertProps> = (props) => {
 Alert.defaultProps = {
   type: "default",
   closable: false,
-  closeText: <CloseIconSvg />,
+  closeText: "x",
 };
 
 export default Alert;
